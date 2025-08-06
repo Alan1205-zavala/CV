@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tu Nombre - Curriculum Vitae</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --bg-light: #ecf0f1;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background-color: var(--bg-light);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: var(--white);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header Section */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--white);
+        padding: 60px 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.1;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        border: 5px solid var(--white);
+        background: var(--bg-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        color: var(--primary-color);
+        position: relative;
+        z-index: 1;
+      }
+
+      .header h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+
+      .header h2 {
+        font-size: 1.5em;
+        font-weight: 300;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Contact Info */
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95em;
+      }
+
+      .contact-item i {
+        width: 16px;
+        text-align: center;
+      }
+
+      /* Main Content */
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        background: var(--bg-light);
+        padding: 30px;
+        border-radius: 10px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section h3 {
+        color: var(--primary-color);
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--secondary-color);
+        position: relative;
+      }
+
+      .section h3::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: var(--accent-color);
+      }
+
+      /* Skills */
+      .skill-item {
+        margin-bottom: 15px;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      .skill-bar {
+        height: 8px;
+        background: rgba(52, 152, 219, 0.2);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        border-radius: 4px;
+        transition: width 1s ease-in-out;
+      }
+
+      /* Languages */
+      .language-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 8px 0;
+      }
+
+      .language-level {
+        background: var(--secondary-color);
+        color: var(--white);
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.8em;
+      }
+
+      /* Main Content Sections */
+      .content {
+        padding: 0 20px;
+      }
+
+      .experience-item,
+      .education-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 30px;
+      }
+
+      .experience-item::before,
+      .education-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        background: var(--secondary-color);
+        border-radius: 50%;
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--secondary-color);
+      }
+
+      .item-header {
+        margin-bottom: 10px;
+      }
+
+      .item-title {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .item-subtitle {
+        color: var(--secondary-color);
+        font-weight: 500;
+      }
+
+      .item-date {
+        color: var(--text-light);
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+
+      .item-description {
+        margin-top: 10px;
+        color: var(--text-light);
+      }
+
+      .item-description ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      .item-description li {
+        margin-bottom: 5px;
+      }
+
+      /* Print Styles */
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        body {
+          background: white;
+          font-size: 12px;
+          line-height: 1.4;
+        }
+
+        .container {
+          box-shadow: none;
+          max-width: none;
+        }
+
+        .header {
+          padding: 30px 20px;
+          background: var(--primary-color) !important;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .profile-img {
+          width: 80px;
+          height: 80px;
+          font-size: 30px;
+        }
+
+        .header h1 {
+          font-size: 2em;
+        }
+
+        .header h2 {
+          font-size: 1.2em;
+        }
+
+        .contact-info {
+          margin-top: 15px;
+          gap: 20px;
+        }
+
+        .main-content {
+          grid-template-columns: 1fr 2fr;
+          gap: 20px;
+          padding: 20px;
+        }
+
+        .sidebar {
+          background: var(--bg-light) !important;
+          padding: 20px;
+        }
+
+        .section {
+          margin-bottom: 25px;
+          page-break-inside: avoid;
+        }
+
+        .experience-item,
+        .education-item {
+          margin-bottom: 20px;
+          page-break-inside: avoid;
+        }
+
+        .skill-bar,
+        .skill-progress {
+          -webkit-print-color-adjust: exact;
+        }
+
+        .language-level {
+          background: var(--secondary-color) !important;
+          -webkit-print-color-adjust: exact;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header {
+          padding: 40px 20px;
+        }
+
+        .header h1 {
+          font-size: 2.2em;
+        }
+
+        .contact-info {
+          gap: 15px;
+          font-size: 0.9em;
+        }
+
+        .main-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          padding: 20px;
+        }
+
+        .sidebar {
+          order: 2;
+        }
+
+        .content {
+          order: 1;
+          padding: 0;
+        }
+      }
+
+      /* Button for print */
+      .print-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        padding: 15px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .print-btn:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+
+      @media print {
+        .print-btn {
+          display: none;
+        }
+      }
+
+      /* Animation for skills on load */
+      @keyframes fillSkill {
+        from {
+          width: 0;
+        }
+        to {
+          width: var(--skill-width);
+        }
+      }
+
+      .skill-progress.animate {
+        animation: fillSkill 1.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="profile-img">
+          <i class="fas fa-user"></i>
+        </div>
+        <h1>Tu Nombre Completo</h1>
+        <h2>Desarrollador Full Stack</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>tu.email@ejemplo.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+52 999 123 4567</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Campeche, México</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <span>linkedin.com/in/tuusuario</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <span>github.com/tuusuario</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <!-- Skills -->
+          <section class="section">
+            <h3><i class="fas fa-code"></i> Habilidades Técnicas</h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>JavaScript</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Python</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>React</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Node.js</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>SQL</span>
+                <span>70%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Languages -->
+          <section class="section">
+            <h3><i class="fas fa-language"></i> Idiomas</h3>
+            <div class="language-item">
+              <span>Español</span>
+              <span class="language-level">Nativo</span>
+            </div>
+            <div class="language-item">
+              <span>Inglés</span>
+              <span class="language-level">Avanzado</span>
+            </div>
+            <div class="language-item">
+              <span>Francés</span>
+              <span class="language-level">Básico</span>
+            </div>
+          </section>
+
+          <!-- Soft Skills -->
+          <section class="section">
+            <h3><i class="fas fa-users"></i> Habilidades Blandas</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Trabajo en equipo
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Liderazgo
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Comunicación efectiva
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Resolución de problemas
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Adaptabilidad
+              </li>
+            </ul>
+          </section>
+
+          <!-- Interests -->
+          <section class="section">
+            <h3><i class="fas fa-heart"></i> Intereses</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-laptop-code"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Desarrollo de software
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-robot"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Inteligencia artificial
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-gamepad"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Gaming
+              </li>
+              <li style="margin-bottom: 8px">
+                <i
+                  class="fas fa-book"
+                  style="color: var(--secondary-color); margin-right: 8px"
+                ></i
+                >Lectura técnica
+              </li>
+            </ul>
+          </section>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+          <!-- About -->
+          <section class="section">
+            <h3><i class="fas fa-user"></i> Perfil Profesional</h3>
+            <p>
+              Desarrollador Full Stack con más de 3 años de experiencia en el
+              desarrollo de aplicaciones web modernas. Especializado en
+              JavaScript, Python y tecnologías de frontend como React.
+              Apasionado por crear soluciones innovadoras y eficientes que
+              mejoren la experiencia del usuario. Experiencia trabajando en
+              equipos ágiles y metodologías SCRUM.
+            </p>
+          </section>
+
+          <!-- Experience -->
+          <section class="section">
+            <h3><i class="fas fa-briefcase"></i> Experiencia Laboral</h3>
+            <div class="experience-item">
+              <div class="item-header">
+                <div class="item-title">Desarrollador Full Stack Senior</div>
+                <div class="item-subtitle">Tech Solutions México</div>
+                <div class="item-date">Enero 2022 - Presente</div>
+              </div>
+              <div class="item-description">
+                Desarrollo y mantenimiento de aplicaciones web utilizando React,
+                Node.js y PostgreSQL.
+                <ul>
+                  <li>
+                    Lideré un equipo de 4 desarrolladores en proyectos de gran
+                    escala
+                  </li>
+                  <li>
+                    Implementé mejoras que redujeron el tiempo de carga en un
+                    40%
+                  </li>
+                  <li>
+                    Desarrollé APIs RESTful utilizadas por más de 10,000
+                    usuarios
+                  </li>
+                  <li>
+                    Implementé testing automatizado aumentando la cobertura al
+                    85%
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="item-header">
+                <div class="item-title">Desarrollador Frontend</div>
+                <div class="item-subtitle">Digital Agency Campeche</div>
+                <div class="item-date">Marzo 2020 - Diciembre 2021</div>
+              </div>
+              <div class="item-description">
+                Desarrollo de interfaces de usuario responsivas y experiencias
+                web interactivas.
+                <ul>
+                  <li>Desarrollé más de 15 sitios web responsivos</li>
+                  <li>
+                    Colaboré con diseñadores UX/UI para implementar interfaces
+                    intuitivas
+                  </li>
+                  <li>
+                    Optimicé el rendimiento web mejorando las métricas de Core
+                    Web Vitals
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="item-header">
+                <div class="item-title">Desarrollador Junior</div>
+                <div class="item-subtitle">StartUp Local</div>
+                <div class="item-date">Junio 2019 - Febrero 2020</div>
+              </div>
+              <div class="item-description">
+                Desarrollo de funcionalidades para plataforma e-commerce
+                utilizando PHP y MySQL.
+                <ul>
+                  <li>
+                    Implementé sistema de pagos integrado con PayPal y Stripe
+                  </li>
+                  <li>
+                    Desarrollé dashboard administrativo para gestión de
+                    inventarios
+                  </li>
+                  <li>Participé en la migración de base de datos legacy</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Education -->
+          <section class="section">
+            <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
+            <div class="education-item">
+              <div class="item-header">
+                <div class="item-title">
+                  Ingeniería en Sistemas Computacionales
+                </div>
+                <div class="item-subtitle">
+                  Universidad Autónoma de Campeche
+                </div>
+                <div class="item-date">2015 - 2019</div>
+              </div>
+              <div class="item-description">
+                Promedio: 9.2/10. Tesis sobre desarrollo de aplicaciones móviles
+                con React Native.
+              </div>
+            </div>
+
+            <div class="education-item">
+              <div class="item-header">
+                <div class="item-title">Certificación Full Stack Developer</div>
+                <div class="item-subtitle">freeCodeCamp</div>
+                <div class="item-date">2020</div>
+              </div>
+              <div class="item-description">
+                Certificación completa en desarrollo web moderno incluyendo
+                React, Node.js, MongoDB y más.
+              </div>
+            </div>
+          </section>
+
+          <!-- Projects -->
+          <section class="section">
+            <h3><i class="fas fa-project-diagram"></i> Proyectos Destacados</h3>
+            <div class="experience-item">
+              <div class="item-header">
+                <div class="item-title">E-commerce Platform</div>
+                <div class="item-subtitle">React, Node.js, MongoDB</div>
+                <div class="item-date">2023</div>
+              </div>
+              <div class="item-description">
+                Plataforma completa de comercio electrónico con carrito de
+                compras, sistema de pagos y dashboard administrativo.
+                <ul>
+                  <li>Más de 500 usuarios activos mensuales</li>
+                  <li>Integración con múltiples métodos de pago</li>
+                  <li>Sistema de reseñas y ratings</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="item-header">
+                <div class="item-title">Task Management App</div>
+                <div class="item-subtitle">Vue.js, Firebase</div>
+                <div class="item-date">2022</div>
+              </div>
+              <div class="item-description">
+                Aplicación de gestión de tareas con colaboración en tiempo real
+                y sincronización en la nube.
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()">
+      <i class="fas fa-print"></i> Imprimir PDF
+    </button>
+
+    <script>
+      // Animation for skills when page loads
+      window.addEventListener("load", function () {
+        const skillBars = document.querySelectorAll(".skill-progress");
+        skillBars.forEach((bar) => {
+          bar.classList.add("animate");
+        });
+      });
+
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
