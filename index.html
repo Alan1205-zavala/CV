@@ -80,7 +80,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.15"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.15"/><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.3" fill="white" opacity="0.08"/><circle cx="75" cy="75" r="0.3" fill="white" opacity="0.08"/><circle cx="50" cy="50" r="0.2" fill="white" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
         animation: float 6s ease-in-out infinite;
       }
 
@@ -215,7 +215,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(45deg, transparent 30%, rgba(52, 152, 219, 0.03) 50%, transparent 70%);
+        background: linear-gradient(45deg, transparent 30%, rgba(52, 152, 219, 0.02) 50%, transparent 70%);
         animation: shimmer 3s ease-in-out infinite;
       }
 
@@ -482,19 +482,19 @@
         position: absolute;
         left: 15px;
         top: 25px;
-        width: 12px;
-        height: 12px;
+        width: 6px;
+        height: 6px;
         background: linear-gradient(45deg, var(--secondary-color), var(--success-color));
         border-radius: 50%;
-        border: 3px solid var(--white);
-        box-shadow: 0 0 0 3px var(--secondary-color), 0 3px 10px rgba(52, 152, 219, 0.3);
+        border: 2px solid var(--white);
+        box-shadow: 0 0 0 2px var(--secondary-color), 0 2px 6px rgba(52, 152, 219, 0.2);
         transition: all 0.3s ease;
       }
 
       .experience-item:hover::before,
       .education-item:hover::before {
         transform: scale(1.2);
-        box-shadow: 0 0 0 3px var(--accent-color), 0 5px 15px rgba(231, 76, 60, 0.4);
+        box-shadow: 0 0 0 2px var(--accent-color), 0 3px 8px rgba(231, 76, 60, 0.3);
       }
 
       .item-header {
@@ -609,11 +609,11 @@
         left: 15px;
         font-size: 4em;
         color: var(--secondary-color);
-        opacity: 0.2;
+        opacity: 0.15;
         font-family: Georgia, serif;
       }
 
-      /* Print Styles - OPTIMIZADO PARA UNA SOLA PÁGINA */
+      /* Print Styles - OPTIMIZADO PARA CURRÍCULUM RESUMIDO */
       @media print {
         * {
           -webkit-print-color-adjust: exact !important;
@@ -622,14 +622,15 @@
         }
 
         @page {
-          margin: 0.3in;
+          margin: 0.5in;
           size: letter;
         }
 
         body {
           background: white;
-          font-size: 9px;
-          line-height: 1.2;
+          font-size: 11px;
+          line-height: 1.3;
+          color: #2c3e50;
         }
 
         .container {
@@ -638,57 +639,66 @@
           height: auto;
           overflow: visible;
           border-radius: 0;
+          background: white;
         }
 
         .header {
-          padding: 12px;
-          background: var(--primary-color) !important;
+          padding: 20px;
+          background: #2c3e50 !important;
           -webkit-print-color-adjust: exact;
           page-break-inside: avoid;
+          margin-bottom: 20px;
         }
 
         .profile-img {
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-          margin-bottom: 6px;
+          width: 60px;
+          height: 60px;
+          font-size: 24px;
+          margin-bottom: 10px;
         }
 
         .header h1 {
-          font-size: 1.4em;
-          margin-bottom: 2px;
+          font-size: 1.8em;
+          margin-bottom: 5px;
         }
 
         .header h2 {
-          font-size: 0.9em;
-          margin-bottom: 8px;
+          font-size: 1.1em;
+          margin-bottom: 10px;
         }
 
         .contact-info {
-          margin-top: 8px;
-          gap: 10px;
-          font-size: 0.7em;
+          margin-top: 10px;
+          gap: 8px;
+          font-size: 0.8em;
+          justify-content: flex-start;
         }
 
         .contact-item {
-          padding: 4px 8px;
+          padding: 3px 8px;
           background: rgba(255, 255, 255, 0.2) !important;
         }
 
         .main-content {
-          grid-template-columns: 0.75fr 2.25fr;
-          gap: 12px;
-          padding: 12px 0;
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding: 0;
         }
 
         .sidebar {
-          background: var(--bg-light) !important;
-          padding: 10px;
-          border-radius: 8px;
+          background: transparent !important;
+          padding: 0;
+          border-radius: 0;
+          box-shadow: none !important;
+          display: none; /* Ocultamos sidebar completo */
+        }
+
+        .content {
+          padding: 0;
         }
 
         .section {
-          margin-bottom: 12px;
+          margin-bottom: 15px;
           page-break-inside: avoid;
           background: transparent !important;
           padding: 0 !important;
@@ -697,118 +707,146 @@
         }
 
         .content .section {
-          padding: 12px !important;
-          background: var(--white) !important;
-          border-left: 3px solid var(--secondary-color) !important;
+          padding: 10px 0 !important;
+          background: transparent !important;
+          border-left: 2px solid #3498db !important;
+          padding-left: 15px !important;
+          border-radius: 0 !important;
         }
 
         .section h3 {
-          font-size: 0.8em;
-          margin-bottom: 6px;
+          font-size: 1em;
+          margin-bottom: 8px;
           padding-bottom: 3px;
+          color: #2c3e50 !important;
         }
 
         .experience-item,
         .education-item {
-          margin-bottom: 10px;
+          margin-bottom: 12px;
           page-break-inside: avoid;
-          padding: 8px 8px 8px 20px;
-          background: #f8f9fa !important;
+          padding: 10px 0 10px 20px;
+          background: transparent !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+        }
+
+        .experience-item::before,
+        .education-item::before {
+          width: 4px;
+          height: 4px;
+          left: 5px;
+          top: 15px;
+          border: 1px solid white;
+          box-shadow: 0 0 0 1px #3498db;
         }
 
         .item-title {
-          font-size: 0.75em;
+          font-size: 0.9em;
+          color: #2c3e50 !important;
         }
 
         .item-subtitle {
-          font-size: 0.7em;
+          font-size: 0.8em;
+          color: #3498db !important;
         }
 
         .item-date {
-          font-size: 0.65em;
-          padding: 2px 6px;
+          font-size: 0.75em;
+          padding: 2px 8px;
+          background: rgba(52, 152, 219, 0.1) !important;
         }
 
         .item-description {
-          font-size: 0.7em;
-          line-height: 1.3;
+          font-size: 0.8em;
+          line-height: 1.4;
         }
 
         .item-description li {
-          font-size: 0.65em;
-          margin-bottom: 1px;
-        }
-
-        .skill-name {
-          font-size: 0.7em;
-        }
-
-        .skill-item {
-          margin-bottom: 6px;
-          padding: 6px;
-        }
-
-        .language-item {
-          font-size: 0.7em;
-          margin-bottom: 4px;
-          padding: 4px 8px;
-        }
-
-        .language-level {
-          font-size: 0.6em;
-          padding: 2px 6px;
-        }
-
-        .certificate-item {
-          font-size: 0.7em;
-          margin-bottom: 4px;
-          padding: 6px 8px;
-        }
-
-        .certificate-link {
-          font-size: 0.65em;
-          padding: 3px 6px;
-        }
-
-        .sidebar li {
-          font-size: 0.65em;
-          margin-bottom: 3px;
-          padding: 4px 6px;
-        }
-
-        .sidebar i {
-          font-size: 0.65em;
-        }
-
-        .skill-bar,
-        .skill-progress {
-          -webkit-print-color-adjust: exact;
-          height: 3px;
+          font-size: 0.75em;
+          margin-bottom: 2px;
         }
 
         .profile-text {
-          font-size: 0.75em;
-          line-height: 1.4;
-          padding: 8px;
+          font-size: 0.85em;
+          line-height: 1.5;
+          padding: 10px 0;
+          background: transparent !important;
+          border-left: 2px solid #3498db !important;
+          padding-left: 15px !important;
         }
 
         .profile-text::before {
           display: none;
         }
 
-        /* Forzar contenido en una sola página */
-        .content .section:nth-last-child(2) {
+        /* Crear una sección de habilidades resumida para imprimir */
+        .print-skills {
+          display: block !important;
+          margin-bottom: 15px;
           page-break-inside: avoid;
         }
 
-        .content .section:last-child .experience-item:last-child {
-          margin-bottom: 0;
+        .print-skills h3 {
+          font-size: 1em;
+          margin-bottom: 8px;
+          padding-bottom: 3px;
+          color: #2c3e50 !important;
+          border-bottom: 1px solid #3498db;
         }
 
-        /* Ocultar animaciones en impresión */
+        .print-skills-content {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 5px;
+          font-size: 0.8em;
+        }
+
+        .print-skill {
+          background: rgba(52, 152, 219, 0.05);
+          padding: 3px 8px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        /* Ocultar elementos innecesarios para imprimir */
         * {
           animation: none !important;
           transition: none !important;
+        }
+
+        .sidebar,
+        .print-btn {
+          display: none !important;
+        }
+
+        /* Ajustes finales para maximizar espacio */
+        .container {
+          margin: 0;
+          width: 100%;
+        }
+
+        /* Evitar saltos de página innecesarios */
+        .content .section:last-child {
+          page-break-after: avoid;
+        }
+      }
+
+      /* Estilos para la versión impresa - sección de habilidades */
+      .print-skills {
+        display: none;
+      }
+
+      @media print {
+        .print-skills {
+          display: block;
+          background: transparent !important;
+          padding: 10px 0 !important;
+          border-left: 2px solid #3498db !important;
+          padding-left: 15px !important;
+          border-radius: 0 !important;
         }
       }
 
@@ -1068,19 +1106,19 @@
             <h3><i class="fas fa-certificate"></i> Certificaciones</h3>
             <div class="certificate-item">
               <span class="certificate-name">Microsoft PowerPoint</span>
-              <a href="https://github.com/Alan1205-zavala/CV/blob/ff78f5b3d62aeb77523143bf73ba82e3ea2fcdcf/Certificados%20Microsoft-PowerPoint.pdf">
+              <a href="https://github.com/Alan1205-zavala/CV/blob/ff78f5b3d62aeb77523143bf73ba82e3ea2fcdcf/Certificados%20Microsoft-PowerPoint.pdf" target="_blank" class="certificate-link">
                 <i class="fab fa-github"></i> Ver
               </a>
             </div>
             <div class="certificate-item">
               <span class="certificate-name">Microsoft Word</span>
-              <a href="https://github.com/Alan1205-zavala/CV/blob/78bfbc324000913c01f94aa4a5deacee84db0347/Certificados%20Microsoft-Word.pdf">
+              <a href="https://github.com/Alan1205-zavala/CV/blob/78bfbc324000913c01f94aa4a5deacee84db0347/Certificados%20Microsoft-Word.pdf" target="_blank" class="certificate-link">
                 <i class="fab fa-github"></i> Ver
               </a>
             </div>
             <div class="certificate-item">
               <span class="certificate-name">Microsoft Excel</span>
-              <a href="https://github.com/Alan1205-zavala/CV/blob/7d7e8874e35eb6a4169307a4603e88bf9e9cd383/Certificados%20Microsoft-Excel.pdf">
+              <a href="https://github.com/Alan1205-zavala/CV/blob/7d7e8874e35eb6a4169307a4603e88bf9e9cd383/Certificados%20Microsoft-Excel.pdf" target="_blank" class="certificate-link">
                 <i class="fab fa-github"></i> Ver
               </a>
             </div>
@@ -1177,6 +1215,45 @@
               Soy un desarrollador Full Stack en formación con sólida experiencia en tecnologías web modernas, desarrollo de aplicaciones móviles y creación de videojuegos. Mi pasión por la tecnología me impulsa a mantenerme actualizado con las últimas tendencias en desarrollo de software. 
               <br><br>
               Me caracterizo por mi capacidad de adaptación a diferentes entornos de trabajo, mi enfoque en la resolución de problemas técnicos complejos y mi compromiso con la entrega de soluciones funcionales y eficientes. Tengo experiencia liderando equipos pequeños y colaborando en proyectos multidisciplinarios usando metodologías ágiles.
+            </div>
+          </section>
+
+          <!-- Skills resumidas para impresión -->
+          <section class="print-skills">
+            <h3><i class="fas fa-code"></i> Habilidades Técnicas</h3>
+            <div class="print-skills-content">
+              <div class="print-skill">
+                <span>JavaScript/HTML/CSS</span>
+                <span>90%</span>
+              </div>
+              <div class="print-skill">
+                <span>Python/Flask</span>
+                <span>90%</span>
+              </div>
+              <div class="print-skill">
+                <span>React</span>
+                <span>60%</span>
+              </div>
+              <div class="print-skill">
+                <span>Node.js</span>
+                <span>75%</span>
+              </div>
+              <div class="print-skill">
+                <span>MySQL/MongoDB</span>
+                <span>75%</span>
+              </div>
+              <div class="print-skill">
+                <span>Java/Spring</span>
+                <span>60%</span>
+              </div>
+              <div class="print-skill">
+                <span>Unity/Godot</span>
+                <span>70%</span>
+              </div>
+              <div class="print-skill">
+                <span>Firebase/Flutter</span>
+                <span>60%</span>
+              </div>
             </div>
           </section>
 
@@ -1480,8 +1557,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
