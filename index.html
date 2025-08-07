@@ -613,7 +613,7 @@
         font-family: Georgia, serif;
       }
 
-      /* Print Styles - OPTIMIZADO PARA UNA SOLA PÁGINA */
+      /* Print Styles - SUPER OPTIMIZADO PARA MÁXIMA COMPACTACIÓN */
       @media print {
         * {
           -webkit-print-color-adjust: exact !important;
@@ -622,14 +622,14 @@
         }
 
         @page {
-          margin: 0.3in;
+          margin: 0.2in 0.25in;
           size: letter;
         }
 
         body {
           background: white;
-          font-size: 9px;
-          line-height: 1.2;
+          font-size: 7.5px;
+          line-height: 1.1;
         }
 
         .container {
@@ -641,54 +641,55 @@
         }
 
         .header {
-          padding: 12px;
+          padding: 8px 10px;
           background: var(--primary-color) !important;
           -webkit-print-color-adjust: exact;
           page-break-inside: avoid;
         }
 
         .profile-img {
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-          margin-bottom: 6px;
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+          margin-bottom: 4px;
         }
 
         .header h1 {
-          font-size: 1.4em;
+          font-size: 1.1em;
           margin-bottom: 2px;
         }
 
         .header h2 {
-          font-size: 0.9em;
-          margin-bottom: 8px;
+          font-size: 0.75em;
+          margin-bottom: 6px;
         }
 
         .contact-info {
-          margin-top: 8px;
-          gap: 10px;
-          font-size: 0.7em;
+          margin-top: 6px;
+          gap: 8px;
+          font-size: 0.6em;
         }
 
         .contact-item {
-          padding: 4px 8px;
+          padding: 2px 6px;
           background: rgba(255, 255, 255, 0.2) !important;
+          border-radius: 10px;
         }
 
         .main-content {
-          grid-template-columns: 0.75fr 2.25fr;
-          gap: 12px;
-          padding: 12px 0;
+          grid-template-columns: 0.7fr 2.3fr;
+          gap: 8px;
+          padding: 8px 0;
         }
 
         .sidebar {
           background: var(--bg-light) !important;
-          padding: 10px;
-          border-radius: 8px;
+          padding: 6px;
+          border-radius: 6px;
         }
 
         .section {
-          margin-bottom: 12px;
+          margin-bottom: 8px;
           page-break-inside: avoid;
           background: transparent !important;
           padding: 0 !important;
@@ -697,118 +698,186 @@
         }
 
         .content .section {
-          padding: 12px !important;
+          padding: 8px !important;
           background: var(--white) !important;
-          border-left: 3px solid var(--secondary-color) !important;
+          border-left: 2px solid var(--secondary-color) !important;
+          margin-bottom: 8px;
+          border-radius: 4px;
         }
 
         .section h3 {
-          font-size: 0.8em;
-          margin-bottom: 6px;
-          padding-bottom: 3px;
+          font-size: 0.7em;
+          margin-bottom: 4px;
+          padding-bottom: 2px;
+          border-bottom-width: 1px;
         }
 
         .experience-item,
         .education-item {
-          margin-bottom: 10px;
+          margin-bottom: 6px;
           page-break-inside: avoid;
-          padding: 8px 8px 8px 20px;
+          padding: 6px 6px 6px 16px;
           background: #f8f9fa !important;
+          border-radius: 4px;
+        }
+
+        .experience-item::before,
+        .education-item::before {
+          width: 8px;
+          height: 8px;
+          left: 6px;
+          top: 8px;
+          border-width: 2px;
         }
 
         .item-title {
-          font-size: 0.75em;
+          font-size: 0.65em;
+          margin-bottom: 1px;
+          font-weight: 700;
         }
 
         .item-subtitle {
-          font-size: 0.7em;
-        }
-
-        .item-date {
-          font-size: 0.65em;
-          padding: 2px 6px;
-        }
-
-        .item-description {
-          font-size: 0.7em;
-          line-height: 1.3;
-        }
-
-        .item-description li {
-          font-size: 0.65em;
+          font-size: 0.6em;
           margin-bottom: 1px;
         }
 
+        .item-date {
+          font-size: 0.55em;
+          padding: 1px 4px;
+          margin-top: 2px;
+        }
+
+        .item-description {
+          font-size: 0.6em;
+          line-height: 1.2;
+          margin-top: 4px;
+        }
+
+        .item-description ul {
+          margin-left: 12px;
+          margin-top: 3px;
+        }
+
+        .item-description li {
+          font-size: 0.55em;
+          margin-bottom: 1px;
+          line-height: 1.2;
+        }
+
+        .item-description li::before {
+          left: -10px;
+        }
+
         .skill-name {
-          font-size: 0.7em;
+          font-size: 0.6em;
+          margin-bottom: 2px;
         }
 
         .skill-item {
-          margin-bottom: 6px;
-          padding: 6px;
-        }
-
-        .language-item {
-          font-size: 0.7em;
           margin-bottom: 4px;
-          padding: 4px 8px;
-        }
-
-        .language-level {
-          font-size: 0.6em;
-          padding: 2px 6px;
-        }
-
-        .certificate-item {
-          font-size: 0.7em;
-          margin-bottom: 4px;
-          padding: 6px 8px;
-        }
-
-        .certificate-link {
-          font-size: 0.65em;
-          padding: 3px 6px;
-        }
-
-        .sidebar li {
-          font-size: 0.65em;
-          margin-bottom: 3px;
-          padding: 4px 6px;
-        }
-
-        .sidebar i {
-          font-size: 0.65em;
+          padding: 4px;
+          border-radius: 4px;
         }
 
         .skill-bar,
         .skill-progress {
-          -webkit-print-color-adjust: exact;
-          height: 3px;
+          height: 2px;
+          border-radius: 2px;
+        }
+
+        .language-item {
+          font-size: 0.6em;
+          margin-bottom: 3px;
+          padding: 3px 6px;
+          border-radius: 10px;
+        }
+
+        .language-level {
+          font-size: 0.5em;
+          padding: 1px 4px;
+          border-radius: 8px;
+        }
+
+        .certificate-item {
+          font-size: 0.6em;
+          margin-bottom: 3px;
+          padding: 4px 6px;
+          border-left-width: 2px;
+          border-radius: 4px;
+        }
+
+        .certificate-name {
+          font-size: 0.95em;
+        }
+
+        .certificate-link {
+          font-size: 0.5em;
+          padding: 2px 4px;
+          border-radius: 6px;
+        }
+
+        .sidebar li {
+          font-size: 0.55em;
+          margin-bottom: 2px;
+          padding: 3px 5px;
+          border-radius: 8px;
+        }
+
+        .sidebar i {
+          font-size: 0.55em;
+          width: 12px;
         }
 
         .profile-text {
-          font-size: 0.75em;
-          line-height: 1.4;
-          padding: 8px;
+          font-size: 0.65em;
+          line-height: 1.3;
+          padding: 6px;
+          border-radius: 4px;
+          border-left-width: 2px;
         }
 
         .profile-text::before {
           display: none;
         }
 
-        /* Forzar contenido en una sola página */
-        .content .section:nth-last-child(2) {
-          page-break-inside: avoid;
+        /* Reducir espaciado entre elementos */
+        .content .section:last-child {
+          margin-bottom: 0;
         }
 
-        .content .section:last-child .experience-item:last-child {
+        .experience-item:last-child,
+        .education-item:last-child {
           margin-bottom: 0;
+        }
+
+        /* Compactar las últimas secciones */
+        .content .section:nth-last-child(-n+2) .experience-item,
+        .content .section:nth-last-child(-n+2) .education-item {
+          margin-bottom: 4px;
+          padding: 4px 4px 4px 14px;
         }
 
         /* Ocultar animaciones en impresión */
         * {
           animation: none !important;
           transition: none !important;
+        }
+
+        /* Forzar distribución eficiente del contenido */
+        .content .section:nth-child(1) { 
+          page-break-after: avoid;
+        }
+        
+        .content .section:nth-child(2) .experience-item {
+          margin-bottom: 4px;
+        }
+        
+        .content .section:nth-child(3) {
+          page-break-inside: avoid;
+        }
+        
+        .content .section:last-child {
+          page-break-inside: auto;
         }
       }
 
