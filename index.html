@@ -613,7 +613,152 @@
         font-family: Georgia, serif;
       }
 
-      /* Print Styles - OPTIMIZADO PARA CURRÍCULUM RESUMIDO */
+      /* Mini certificate buttons */
+      .mini-cert-btn {
+        background: linear-gradient(45deg, var(--secondary-color), var(--success-color));
+        color: var(--white);
+        border: none;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+      }
+
+      .mini-cert-btn:hover {
+        background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5);
+      }
+
+      .certificate-actions {
+        margin-top: 10px;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .container {
+        background: #2d2d2d;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode .sidebar {
+        background: linear-gradient(145deg, #3a3a3a, #2d2d2d);
+        box-shadow: inset 5px 5px 10px #252525, inset -5px -5px 10px #353535;
+      }
+
+      body.dark-mode .section {
+        background: #3a3a3a;
+        border-left-color: var(--secondary-color);
+      }
+
+      body.dark-mode .content .section {
+        background: #3a3a3a;
+        box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode .skill-item,
+      body.dark-mode .language-item,
+      body.dark-mode .certificate-item,
+      body.dark-mode .sidebar li {
+        background: #4a4a4a;
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .experience-item,
+      body.dark-mode .education-item {
+        background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .profile-text {
+        background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .item-title {
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .section h3 {
+        color: #e0e0e0;
+      }
+
+      body.dark-mode .skill-name,
+      body.dark-mode .certificate-name {
+        color: #e0e0e0;
+      }
+
+      /* Dark mode toggle button */
+      .dark-mode-toggle {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: var(--white);
+        border: none;
+        padding: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1001;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dark-mode-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode .dark-mode-toggle {
+        background: linear-gradient(45deg, var(--warning-color), var(--accent-color));
+      }
+
+      /* Print styles updates */
+      @media print {
+        .dark-mode-toggle,
+        .mini-cert-btn,
+        .certificate-actions {
+          display: none !important;
+        }
+
+        body.dark-mode {
+          background: white !important;
+          color: #2c3e50 !important;
+        }
+
+        body.dark-mode .container,
+        body.dark-mode .section,
+        body.dark-mode .content .section,
+        body.dark-mode .experience-item,
+        body.dark-mode .education-item,
+        body.dark-mode .profile-text {
+          background: white !important;
+          color: #2c3e50 !important;
+        }
+
+        body.dark-mode .item-title,
+        body.dark-mode .section h3,
+        body.dark-mode .skill-name,
+        body.dark-mode .certificate-name {
+          color: #2c3e50 !important;
+        }
+      }
       @media print {
         * {
           -webkit-print-color-adjust: exact !important;
@@ -1304,6 +1449,7 @@
           <!-- Education -->
           <section class="section">
             <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
+            
             <div class="education-item" onclick="expandItem(this)">
               <div class="item-header">
                 <div class="item-title">
@@ -1316,6 +1462,74 @@
               </div>
               <div class="item-description">
                 <strong>Promedio General:</strong> 8.9/10.0
+                <br><br>
+                Formación integral en desarrollo de software, arquitectura de sistemas, bases de datos, redes de computadoras y metodologías de desarrollo. Participación activa en proyectos prácticos que combinan teoría y aplicación real de conocimientos tecnológicos.
+              </div>
+            </div>
+
+            <div class="education-item" onclick="expandItem(this)">
+              <div class="item-header">
+                <div class="item-title">
+                  Bachillerato
+                </div>
+                <div class="item-subtitle">
+                  Dr. Víctor Nazario Montejo Godoy
+                </div>
+                <div class="item-date">2018 - 2021</div>
+              </div>
+              <div class="item-description">
+                <strong>Promedio Final:</strong> 8.6/10.0
+                <br><br>
+                Preparación académica en ciencias exactas con enfoque en matemáticas, física y tecnologías de la información, sentando las bases para mi formación universitaria en ingeniería.
+                <div class="certificate-actions" style="margin-top: 10px;">
+                  <button onclick="openCertificate('bachillerato')" class="mini-cert-btn">
+                    <i class="fas fa-certificate"></i> Ver Certificado
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="education-item" onclick="expandItem(this)">
+              <div class="item-header">
+                <div class="item-title">
+                  Escuela Secundaria General #3
+                </div>
+                <div class="item-subtitle">
+                  Instituto Campechano
+                </div>
+                <div class="item-date">2015 - 2018</div>
+              </div>
+              <div class="item-description">
+                <strong>Promedio Final:</strong> 9.3/10.0
+                <br><br>
+                Educación secundaria con excelente desempeño académico, destacando en materias de ciencias y tecnología.
+                <div class="certificate-actions" style="margin-top: 10px;">
+                  <button onclick="openCertificate('secundaria')" class="mini-cert-btn">
+                    <i class="fas fa-certificate"></i> Ver Certificado
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="education-item" onclick="expandItem(this)">
+              <div class="item-header">
+                <div class="item-title">
+                  Escuela Primaria
+                </div>
+                <div class="item-subtitle">
+                  Instituto Mendoza
+                </div>
+                <div class="item-date">2009 - 2015</div>
+              </div>
+              <div class="item-description">
+                <strong>Promedio Final:</strong> 9.1/10.0
+                <br><br>
+                Educación primaria completada con excelente rendimiento académico, desarrollando bases sólidas en lectoescritura, matemáticas y ciencias naturales.
+                <div class="certificate-actions" style="margin-top: 10px;">
+                  <button onclick="openCertificate('primaria')" class="mini-cert-btn">
+                    <i class="fas fa-certificate"></i> Ver Certificado
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -1348,6 +1562,11 @@
         </main>
       </div>
     </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Cambiar modo oscuro/claro">
+      <i class="fas fa-moon" id="dark-mode-icon"></i>
+    </button>
 
     <!-- Print Button -->
     <button class="print-btn" onclick="window.print()">
@@ -1542,17 +1761,46 @@
         }
       });
 
-      // Funcionalidad de modo oscuro (bonus)
+      // Función para abrir certificados educativos
+      function openCertificate(level) {
+        // URLs de ejemplo - reemplaza con tus enlaces reales
+        const certificateUrls = {
+          'primaria': 'https://github.com/Alan1205-zavala/CV/certificados/primaria.pdf',
+          'secundaria': 'https://github.com/Alan1205-zavala/CV/certificados/secundaria.pdf',
+          'bachillerato': 'https://github.com/Alan1205-zavala/CV/certificados/bachillerato.pdf'
+        };
+        
+        const url = certificateUrls[level];
+        if (url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+          showNotification(`Abriendo certificado de ${level}...`);
+        } else {
+          showNotification('Certificado no disponible', 'error');
+        }
+      }
+
+      // Funcionalidad de modo oscuro mejorada
       function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        const icon = document.getElementById('dark-mode-icon');
+        
+        if (isDarkMode) {
+          icon.className = 'fas fa-sun';
+          showNotification('Modo oscuro activado 🌙', 'info');
+        } else {
+          icon.className = 'fas fa-moon';
+          showNotification('Modo claro activado ☀️', 'info');
+        }
+        
+        localStorage.setItem('darkMode', isDarkMode);
       }
 
       // Cargar preferencia de modo oscuro
       if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-icon').className = 'fas fa-sun';
       }
     </script>
   </body>
 </html>
-
